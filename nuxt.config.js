@@ -25,12 +25,17 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    "@nuxtjs/tailwindcss"
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/pwa",
+    "@nuxtjs/svg-sprite"
   ],
+  svgSprite: {},
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  server: { host: "0.0.0.0", port: 8080 }
 };
