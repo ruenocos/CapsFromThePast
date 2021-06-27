@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: "/CapsFromThePast/"
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "capsfromthepast",
@@ -27,9 +30,17 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/pwa",
-    "@nuxtjs/svg-sprite"
+    "@nuxtjs/svg-sprite",
+    "@nuxtjs/google-fonts"
   ],
   svgSprite: {},
+
+  googleFonts: {
+    families: {
+      Arvo: true,
+      "Noto+Sans": true
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxt/content"],

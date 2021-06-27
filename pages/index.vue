@@ -71,6 +71,17 @@ export default {
   z-index: 0;
 }
 
+.slider_front::before {
+  @apply w-full h-full;
+  background: #0f0e17 0% 0%;
+  opacity: 0.2;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
 .carousel-entry {
   @apply w-1/3;
   height: 100vh;
@@ -83,7 +94,7 @@ export default {
 
 .title h1,
 .title a {
-  z-index: 2;
+  z-index: 10;
 }
 
 .title {
@@ -92,7 +103,7 @@ export default {
 }
 
 .title h1 {
-  @apply text-7xl;
+  @apply text-7xl font-serif;
   color: white;
   text-transform: uppercase;
 }

@@ -208,8 +208,12 @@ export default {
   margin: 0 6vw;
 }
 
+.product-details * {
+  @apply font-sans;
+}
+
 .product-details h3 {
-  @apply text-black dark:text-white;
+  @apply text-black dark:text-white uppercase;
 }
 
 .price {

@@ -107,7 +107,7 @@ export default {
 }
 
 .wons-header > * {
-  @apply w-1/3;
+  @apply w-1/3 font-sans uppercase;
 }
 
 .wons-header-logo {
