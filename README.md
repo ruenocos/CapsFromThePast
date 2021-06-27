@@ -18,3 +18,10 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+
+## Design link
+
+```
+https://xd.adobe.com/view/d02bb100-e12b-455f-9223-a0306f5309dc-8578/
+```
