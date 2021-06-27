@@ -1,22 +1,29 @@
 <template>
   <div class="front-page">
-    <Flicking @ready="onCarouselReady" class="slider_front" :plugins="carouselPlugins" :options="carouselSettings">
+    <Flicking
+      @ready="onCarouselReady"
+      class="slider_front"
+      :plugins="carouselPlugins"
+      :options="carouselSettings"
+    >
       <div class="carousel-entry" v-for="image in images" :key="image">
-        <img :src="require(`~/assets/images/${image}`)">
+        <img :src="require(`~/assets/images/${image}`)" />
       </div>
     </Flicking>
 
     <div class="title">
       <h1>Blast From The Past</h1>
-      <button class="shop">shop now</button>
+      <nuxt-link to="/catalogus">
+        <button class="shop">shop now</button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import { Flicking } from '@egjs/vue-flicking'
-import { AutoPlay } from '@egjs/flicking-plugins'
-import "@egjs/vue-flicking/dist/flicking.css"
+import { Flicking } from "@egjs/vue-flicking";
+import { AutoPlay } from "@egjs/flicking-plugins";
+import "@egjs/vue-flicking/dist/flicking.css";
 
 export default {
   components: {
@@ -24,48 +31,44 @@ export default {
   },
   methods: {
     onCarouselReady(e) {
-      const target = e.currentTarget
+      const target = e.currentTarget;
 
-      window.addEventListener('resize', () => {
-        target.resize()
-      })
+      window.addEventListener("resize", () => {
+        target.resize();
+      });
     }
   },
   data() {
     return {
       images: [
-        'Fullview_Person.jpg',
-        'Frontview_Person2.jpg',
-        'Fullview_person2.jpg',
-        'Frontview_Person3.jpg',
-        'Sideview_person.jpg',
-        'frontview_person4.jpg',
+        "Fullview_Person.jpg",
+        "Frontview_Person2.jpg",
+        "Fullview_person2.jpg",
+        "Frontview_Person3.jpg",
+        "Sideview_person.jpg",
+        "frontview_person4.jpg"
       ],
       carouselSettings: {
         renderOnlyVisible: true,
         circular: true,
         autoResize: true
       },
-      carouselPlugins: [
-        new AutoPlay({
-
-        })
-      ]
-    }
+      carouselPlugins: [new AutoPlay({})]
+    };
   }
 };
 </script>
 
 <style>
 .front-page {
-  position:relative;
+  position: relative;
 }
 
 .slider_front {
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: 0;
 }
 
 .carousel-entry {
@@ -76,6 +79,11 @@ export default {
 .carousel-entry img {
   @apply w-full h-full;
   object-fit: cover;
+}
+
+.title h1,
+.title a {
+  z-index: 2;
 }
 
 .title {
@@ -105,6 +113,4 @@ export default {
   margin: 20px 0;
   text-transform: uppercase;
 }
-
-
 </style>

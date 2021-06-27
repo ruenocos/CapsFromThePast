@@ -1,12 +1,11 @@
 <template>
-  <div class="layout-container">
+  <div class="layout-container bg-white dark:bg-black">
     <wons-header class="wons-header" />
     <Nuxt />
   </div>
 </template>
 
 <style>
-
 .layout-container {
   @apply relative;
 }
@@ -15,5 +14,4 @@
   @apply absolute;
   top: 0;
 }
-
 </style>

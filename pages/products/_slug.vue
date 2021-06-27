@@ -2,7 +2,12 @@
   <div class="details-page">
     <div class="overview">
       <div class="product-thumbnails">
-        <a v-for="image in product.images" :key="image" :href="'#' + imageId(image)" @click="onThumbnailClick">
+        <a
+          v-for="image in product.images"
+          :key="image"
+          :href="'#' + imageId(image)"
+          @click="onThumbnailClick"
+        >
           <img
             :src="require(`~/assets/images/${image}`)"
             alt=""
@@ -22,7 +27,12 @@
         /> -->
       </div>
       <div class="product-pictures">
-        <div v-for="image in product.images" :key="image" class="details-picture-frame" :id="imageId(image)">
+        <div
+          v-for="image in product.images"
+          :key="image"
+          class="details-picture-frame"
+          :id="imageId(image)"
+        >
           <img
             :src="require(`~/assets/images/${image}`)"
             alt=""
@@ -53,11 +63,19 @@
           <nuxt-content :document="product"></nuxt-content>
         </div>
         <div class="product-sizing">
-          <button @click="onSizeChange" class="product-size px-2" v-for="size in sizes" :key="size">
+          <div
+            @click="onSizeChange"
+            class="product-size px-2"
+            :class="size === currentSize ? 'text-orange font-bold' : ''"
+            v-for="size in sizes"
+            :key="size"
+          >
             {{ sizeText(size) }}
-          </button>
+          </div>
         </div>
-        <button @click="onAddToCart" class="checkout">Add to cart</button>
+        <div class="checkout-container">
+          <button @click="onAddToCart" class="checkout">Add to cart</button>
+        </div>
       </div>
     </div>
   </div>
@@ -66,34 +84,34 @@
 <script>
 export default {
   validate({ params, query, store }) {
-    return params.slug.length > 0
+    return params.slug.length > 0;
   },
   async asyncData({ $content, params }) {
-    const product = await $content('products', params.slug).fetch()
+    const product = await $content("products", params.slug).fetch();
 
     return {
       product,
-      currentSize: 'XL',
-      sizes: ['S', 'M', 'L', 'XL']
-    }
+      currentSize: "M",
+      sizes: ["S", "M", "L", "XL"]
+    };
   },
   methods: {
     sizeText(text) {
       if (text === this.currentSize) {
-        return `[ ${text} ]`
+        return `[ ${text} ]`;
       }
-      return text
+      return text;
     },
     onSizeChange(event) {
-      const newSize = event.target.innerText
+      const newSize = event.target.innerText;
 
-      console.log(newSize)
-      this.currentSize = newSize
+      console.log(newSize);
+      this.currentSize = newSize;
     },
     onAddToCart() {
-      const slug = this.product.path + '--' + this.currentSize
+      const slug = this.product.path + "--" + this.currentSize;
 
-      let productInfo = sessionStorage.getItem(slug)
+      let productInfo = sessionStorage.getItem(slug);
 
       if (productInfo === null) {
         productInfo = {
@@ -103,30 +121,36 @@ export default {
           size: this.currentSize,
           price: this.product.price,
           key: this.product.path
-        }
+        };
       } else {
-        productInfo = JSON.parse(productInfo)
-        productInfo.quantity++
+        productInfo = JSON.parse(productInfo);
+        productInfo.quantity++;
       }
 
-      sessionStorage.setItem(slug, JSON.stringify(productInfo))
+      sessionStorage.setItem(slug, JSON.stringify(productInfo));
 
-      window.updateCart(null, true)
+      if (window.updateCart === undefined) {
+        setTimeout(() => {
+          window.updateCart(null, true);
+        }, 500);
+      } else {
+        window.updateCart(null, true);
+      }
     },
     computedPrice(price) {
-      return `$${price}`
+      return `$${price}`;
     },
     onThumbnailClick(event) {
-      const id = event.target.parentElement.getAttribute('src')
-      const el = document.getElementById(id.substr(1))
+      const id = event.target.parentElement.getAttribute("src");
+      const el = document.getElementById(id.substr(1));
 
       scroll({
         top: el.offsetTop,
-        behavior: 'smooth'
-      })
+        behavior: "smooth"
+      });
     },
     imageId(image) {
-      return 'image' + this.product.images.indexOf(image)
+      return "image" + this.product.images.indexOf(image);
     }
   }
 };
@@ -184,14 +208,31 @@ export default {
   margin: 0 6vw;
 }
 
+.product-details h3 {
+  @apply text-black dark:text-white;
+}
+
+.price {
+  @apply text-orange font-bold;
+}
+
+.product-description {
+  @apply text-gray;
+}
+
+.product-sizing {
+  @apply flex text-black dark:text-white cursor-pointer;
+}
+
 .price,
 .product-description,
 .product-sizing {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .checkout {
-  width: 40%;
+  @apply text-orange border-orange border-2 font-semibold;
   text-transform: uppercase;
+  padding: 0.5rem 1rem;
 }
 </style>

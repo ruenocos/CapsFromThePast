@@ -1,0 +1,17 @@
+*::-webkit-scrollbar {
+  @apply w-1;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-md;
+  background-color: white;
+}
+
+* {
+  scrollbar-color: white transparent;
+  scrollbar-width: thin;
+}

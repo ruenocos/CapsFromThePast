@@ -14,7 +14,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ["@/assets/css/global.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -32,9 +32,7 @@ export default {
   svgSprite: {},
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxt/content'
-  ],
+  modules: ["@nuxt/content"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

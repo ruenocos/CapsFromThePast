@@ -16,11 +16,12 @@
       </nav>
       <nav class="wons-header-navigation-right">
         <ul>
-          <li>
-            Dark Mode
+          <li @click="onDarkModeChanged">
+            <svg-icon v-if="! enabledDarkMode" class="DLswitch" name="light_switch"/>
+            <svg-icon v-else class="DLswitch" name="dark_switch"/>
           </li>
           <li @click="onCartClick">
-            Cart {{ cartCount }}
+            Cart ({{ cartCount }})
           </li>
         </ul>
       </nav>
@@ -36,7 +37,8 @@ export default {
         { link: "/catalogus", name: "Shop" },
         { link: "/", name: "Information" }
       ],
-      cartCountReal: 0
+      cartCountReal: 0,
+      enabledDarkMode: false
     };
   },
   computed: {
@@ -66,6 +68,17 @@ export default {
 
       this.cartCountReal = this.$refs.basket.getItemCount()
       console.log(this.cartCountReal)
+    },
+    onDarkModeChanged() {
+      this.enabledDarkMode = !this.enabledDarkMode
+
+      const htmlEl = document.querySelector('html')
+      console.log(htmlEl)
+      if (this.enabledDarkMode) {
+        htmlEl.classList.add('dark')
+      } else {
+        htmlEl.classList.remove('dark')
+      }
     }
   }
 };
@@ -73,13 +86,13 @@ export default {
 
 <style>
 .wons-header {
-  @apply flex flex-1 w-full justify-between px-8 py-4 items-center;
-  color: white;
+  @apply flex flex-1 w-full justify-between px-8 py-4 items-center text-black dark:text-white;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
   z-index: 5;
 }
 
 .wons-header::before {
+  @apply bg-white dark:bg-black;
   top: 0;
   left: 0;
   bottom: 0;
@@ -91,8 +104,6 @@ export default {
   z-index: -1;
 
   backdrop-filter: blur(5px);
-
-  box-shadow: inset 0 0 2000px #0f0e17d0;
 }
 
 .wons-header > * {
@@ -100,9 +111,12 @@ export default {
 }
 
 .wons-header-logo {
-  @apply items-center justify-center;
+  @apply items-center justify-center cursor-pointer;
 }
 
+.wons-header-logo img {
+  @apply w-1/3;
+}
 .wons-header-logo > img {
   @apply w-20 h-20 ;
 }
@@ -112,7 +126,7 @@ export default {
 }
 
 .wons-header-navigation-right {
-  @apply flex justify-end;
+  @apply flex justify-end
 }
 
 .wons-header-navigation-right li:not(:last-child) {
@@ -120,14 +134,19 @@ export default {
 }
 
 .wons-header-navigation ul, .wons-header-navigation-right ul {
-  @apply flex-row flex;
+  @apply flex-row flex items-center;
 }
 
 .wons-header-navigation > ul > li {
   @apply px-4;
 }
 
-.wons-header-logo img {
-  @apply w-1/3;
+.wons-header-navigation-right > ul > li {
+  @apply cursor-pointer;
+}
+
+.DLswitch {
+  @apply h-8;
+  max-width: 6rem;
 }
 </style>

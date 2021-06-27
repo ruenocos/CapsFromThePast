@@ -1,14 +1,14 @@
 <template>
   <div class="catalogus-page">
     <div class="products">
-      <div class="products-filter">
-        <span>Loonie Toons</span>
-        <span>Tv show 2</span>
-        <span>Tv show 3</span>
-      </div>
       <div class="products-grid">
-        <div class="products-col" v-for="col in cols" :key="col">
-          <a :href="product.path" class="products-item" v-for="product in col" :key="product">
+        <div class="products-col" v-for="col in cols" :key="col.toString()">
+          <a
+            :href="product.path"
+            class="products-item"
+            v-for="product in col"
+            :key="product.path"
+          >
             <img :src="require(`~/assets/images/${product.images[0]}`)" />
           </a>
         </div>
@@ -56,20 +56,20 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const products = await $content('products').fetch()
+    const products = await $content("products").fetch();
 
-    const cols = []
+    const cols = [];
     for (let i = 0; i < 4; i++) {
-      const row = []
+      const row = [];
 
-      row.push(...products)
+      row.push(...products);
 
-      cols.push(row)
+      cols.push(row);
     }
 
     return {
       cols
-    }
+    };
   }
 };
 </script>
@@ -83,16 +83,8 @@ export default {
 }
 
 .products {
+  @apply pt-10;
   position: relative;
-}
-
-.products-filter {
-  @apply flex justify-center items-center w-full;
-  margin-bottom: 2.5rem;
-}
-
-.products-filter span:not(:last-child) {
-  margin-right: 2rem;
 }
 
 .products-grid {
