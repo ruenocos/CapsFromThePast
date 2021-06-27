@@ -7,8 +7,24 @@
         <span>Tv show 3</span>
       </div>
       <div class="products-grid">
+        <div class="products-col" v-for="col in cols" :key="col">
+          <a :href="product.path" class="products-item" v-for="product in col" :key="product">
+            <img :src="require(`~/assets/images/${product.images[0]}`)" />
+          </a>
+        </div>
+        <!-- <div class="products-col">
+          <a href="" class="products-item">
+            <img src="..\assets\images\Fullview_product.jpg" />
+          </a>
+          <a href="" class="products-item">
+            <img src="..\assets\images\Fullview_product.jpg" />
+          </a>
+          <a href="" class="products-item">
+            <img src="..\assets\images\Fullview_product.jpg" />
+          </a>
+        </div>
         <div class="products-col">
-          <a href="/details" class="products-item">
+          <a href="" class="products-item">
             <img src="..\assets\images\Fullview_product.jpg" />
           </a>
           <a href="" class="products-item">
@@ -31,39 +47,31 @@
           <a href="" class="products-item">
             <img src="..\assets\images\Fullview_product.jpg" />
           </a>
-        </div>
-        <div class="products-col">
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-        </div>
-        <div class="products-col">
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-          <a href="" class="products-item">
-            <img src="..\assets\images\Fullview_product.jpg" />
-          </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $content, params }) {
+    const products = await $content('products').fetch()
+
+    const cols = []
+    for (let i = 0; i < 4; i++) {
+      const row = []
+
+      row.push(...products)
+
+      cols.push(row)
+    }
+
+    return {
+      cols
+    }
+  }
+};
 </script>
 
 <style>
