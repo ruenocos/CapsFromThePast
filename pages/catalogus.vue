@@ -9,7 +9,15 @@
             v-for="product in col"
             :key="product.path"
           >
-            <img :src="require(`~/assets/images/${product.images[0]}`)" />
+            <img
+              :src="
+                require(`~/assets/images/${
+                  product.images[
+                    Math.floor(Math.random() * product.images.length)
+                  ]
+                }`)
+              "
+            />
           </a>
         </div>
         <!-- <div class="products-col">
@@ -56,13 +64,19 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const products = await $content("products").fetch();
-
     const cols = [];
     for (let i = 0; i < 4; i++) {
       const row = [];
+      const products = await $content("products").fetch();
 
-      row.push(...products);
+      if (i % 2 === 0) {
+        const cloneProduct = products[0];
+        cloneProduct.path;
+        row.push(...products);
+        row.push(cloneProduct);
+      } else {
+        row.push(...products);
+      }
 
       cols.push(row);
     }
@@ -90,22 +104,25 @@ export default {
 .products-grid {
   @apply w-full min-h-full;
   display: grid;
-  grid-template-columns: repeat(2, [col-start] 0.75fr 1fr [col-end]);
+  grid-template-columns: repeat(2, [col-start] 0.85fr 0.95fr [col-end]);
   grid-column-gap: 2.5rem;
   overflow: hidden;
 }
 
 .products-col {
-  @apply flex flex-col;
-}
-
-.products-col:last-child {
-  flex-grow: 1;
+  @apply flex flex-col h-full;
 }
 
 .products-item {
-  @apply w-full;
+  @apply h-full w-full;
+  flex-grow: 1;
   position: relative;
   margin-bottom: 2.5rem;
+}
+
+.products-item img {
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
 }
 </style>

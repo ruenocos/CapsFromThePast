@@ -9,6 +9,10 @@ module.exports = {
         gray: "#a7a9be",
         red: "#f03036",
         orange: "#ff8906"
+      },
+      fontFamily: {
+        sans: ["Noto Sans"],
+        serif: ["Arvo"]
       }
     }
   },
