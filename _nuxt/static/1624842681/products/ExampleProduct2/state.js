@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002FCapsFromThePast\u002F_nuxt\u002Fstatic\u002F1624842681",layout:"default",error:a,serverRendered:true,routePath:"\u002Fproducts\u002FExampleProduct2",config:{_app:{basePath:"\u002FCapsFromThePast\u002F",assetsPath:"\u002FCapsFromThePast\u002F_nuxt\u002F",cdnURL:a},content:{dbHash:"462c9fc7"}}}}(null));
