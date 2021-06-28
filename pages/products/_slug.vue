@@ -168,6 +168,8 @@ export default {
   height: 100vh;
   position: sticky;
   margin: 0 4vw;
+  padding-top: 10rem;
+}
 }
 
 .thumbnail {
