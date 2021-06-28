@@ -7,7 +7,7 @@
       :options="carouselSettings"
     >
       <div class="carousel-entry" v-for="image in images" :key="image">
-        <nuxt-img :src="`${router.base}/${image}`" />
+        <nuxt-img :src="`${router.base + image}`" />
       </div>
     </Flicking>
 

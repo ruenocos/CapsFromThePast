@@ -11,11 +11,10 @@
           >
             <nuxt-img
               :src="
-                `${router.base}${
+                `${router.base +
                   product.images[
                     Math.floor(Math.random() * product.images.length)
-                  ]
-                }`
+                  ]}`
               "
             />
           </nuxt-link>
