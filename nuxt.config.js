@@ -48,7 +48,9 @@ export default {
   modules: ["@nuxt/content"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true
+  },
 
   server: { host: "0.0.0.0", port: 8080 }
 };
