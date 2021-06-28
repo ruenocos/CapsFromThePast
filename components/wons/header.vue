@@ -21,7 +21,7 @@
             <svg-icon v-else class="DLswitch" name="dark_switch"/>
           </li>
           <li @click="onCartClick">
-            Cart ({{ cartCount }})
+            Cart {{'(' + cartCount + ')' }}
           </li>
         </ul>
       </nav>
