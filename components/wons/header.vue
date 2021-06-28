@@ -21,7 +21,7 @@
             <svg-icon v-else class="DLswitch" name="dark_switch"/>
           </li>
           <li @click="onCartClick">
-            Cart {{'(' + cartCount + ')' }}
+            Cart {{ cartCount }}
           </li>
         </ul>
       </nav>
@@ -44,7 +44,7 @@ export default {
   computed: {
     cartCount() {
       if (this.cartCountReal > 0) {
-        return this.cartCountReal
+        return '(' + this.cartCountReal + ')'
       }
 
       return ''
