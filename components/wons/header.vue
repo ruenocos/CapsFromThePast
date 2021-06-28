@@ -99,7 +99,7 @@ export default {
   right: 0;
 
   position: absolute;
-
+ 
   content: '';
   z-index: -1;
 

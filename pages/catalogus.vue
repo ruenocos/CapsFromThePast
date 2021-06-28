@@ -9,13 +9,13 @@
             v-for="product in col"
             :key="product.path"
           >
-            <img
+            <nuxt-img
               :src="
-                require(`~/assets/images/${
+                `/${
                   product.images[
                     Math.floor(Math.random() * product.images.length)
                   ]
-                }`)
+                }`
               "
             />
           </nuxt-link>

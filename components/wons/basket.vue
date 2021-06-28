@@ -9,7 +9,7 @@
       <div class="basket-row-items">
         <div v-for="item in items" :key="item.path" class="item-container">
           <div class="item-img">
-            <img :src="require(`~/assets/images/${item.img}`)" />
+            <nuxt-img :src="`/${item.img}`" />
           </div>
           <div class="item-details">
             <span>
@@ -112,7 +112,7 @@ export default {
 }
 
 .basket-row-btns {
-  @apply flex justify-end pb-4;
+  @apply flex justify-end pb-4 cursor-pointer;
 }
 
 .basket-row-items {

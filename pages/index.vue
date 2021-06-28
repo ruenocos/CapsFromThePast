@@ -7,7 +7,7 @@
       :options="carouselSettings"
     >
       <div class="carousel-entry" v-for="image in images" :key="image">
-        <img :src="require(`~/assets/images/${image}`)" />
+        <nuxt-img :src="`/${image}`" />
       </div>
     </Flicking>
 
@@ -76,12 +76,12 @@ export default {
 .slider_front::before {
   @apply w-full h-full;
   background: #0f0e17 0% 0%;
-  opacity: 0.2;
+  opacity: 0.3;
   position: absolute;
   content: "";
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 3;
 }
 
 .carousel-entry {
@@ -96,11 +96,11 @@ export default {
 
 .title h1,
 .title a {
-  z-index: 10;
+  z-index: 4;
 }
 
 .title {
-  @apply flex flex-col justify-center items-center w-full;
+  @apply flex flex-col justify-center items-center w-full font-bold;
   height: 100vh;
 }
 
