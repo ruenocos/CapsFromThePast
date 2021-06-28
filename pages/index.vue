@@ -7,7 +7,7 @@
       :options="carouselSettings"
     >
       <div class="carousel-entry" v-for="image in images" :key="image">
-        <nuxt-img :src="`${/CapsFromThePast/}/${image}`" />
+        <nuxt-img :src="`${router.options.base}/${image}`" />
       </div>
     </Flicking>
 
