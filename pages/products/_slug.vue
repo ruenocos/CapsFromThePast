@@ -8,7 +8,11 @@
           :to="product.path + '#' + imageId(image)"
           @click="onThumbnailClick"
         >
-          <nuxt-img :src="`/${image}`" alt="" class="thumbnail" />
+          <nuxt-img
+            :src="`${/CapsFromThePast/}/${image}`"
+            alt=""
+            class="thumbnail"
+          />
         </nuxt-link>
 
         <!-- <img
@@ -29,7 +33,11 @@
           class="details-picture-frame"
           :id="imageId(image)"
         >
-          <nuxt-img :src="`/${image}`" alt="" class="details-picture" />
+          <nuxt-img
+            :src="`${/CapsFromThePast/}/${image}`"
+            alt=""
+            class="details-picture"
+          />
         </div>
         <!-- <div class="details-picture-frame">
           <img

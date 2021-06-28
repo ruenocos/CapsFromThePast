@@ -11,7 +11,7 @@
           >
             <nuxt-img
               :src="
-                `/${
+                `${/CapsFromThePast/}/${
                   product.images[
                     Math.floor(Math.random() * product.images.length)
                   ]
