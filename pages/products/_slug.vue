@@ -2,10 +2,10 @@
   <div class="details-page">
     <div class="overview">
       <div class="product-thumbnails">
-        <a
+        <nuxt-link
           v-for="image in product.images"
           :key="image"
-          :href="product.path + '#' + imageId(image)"
+          :to="product.path + '#' + imageId(image)"
           @click="onThumbnailClick"
         >
           <img
@@ -13,7 +13,7 @@
             alt=""
             class="thumbnail"
           />
-        </a>
+        </nuxt-link>
 
         <!-- <img
           src="assets\images\Sideview_product.jpg"
