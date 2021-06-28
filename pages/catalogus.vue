@@ -11,7 +11,7 @@
           >
             <nuxt-img
               :src="
-                `${router.options.base}${
+                `${router.base}${
                   product.images[
                     Math.floor(Math.random() * product.images.length)
                   ]
