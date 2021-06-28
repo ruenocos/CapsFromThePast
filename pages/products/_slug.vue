@@ -5,7 +5,7 @@
         <a
           v-for="image in product.images"
           :key="image"
-          :href="'#' + imageId(image)"
+          :href="product.path + '#' + imageId(image)"
           @click="onThumbnailClick"
         >
           <img
