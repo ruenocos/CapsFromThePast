@@ -3,8 +3,8 @@
     <div class="products">
       <div class="products-grid">
         <div class="products-col" v-for="col in cols" :key="col.toString()">
-          <a
-            :href="product.path"
+          <nuxt-link
+            :to="product.path"
             class="products-item"
             v-for="product in col"
             :key="product.path"
@@ -18,7 +18,7 @@
                 }`)
               "
             />
-          </a>
+          </nuxt-link>
         </div>
         <!-- <div class="products-col">
           <a href="" class="products-item">
