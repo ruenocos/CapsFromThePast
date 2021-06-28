@@ -170,7 +170,6 @@ export default {
   margin: 0 4vw;
   padding-top: 10rem;
 }
-}
 
 .thumbnail {
   @apply cursor-pointer;
