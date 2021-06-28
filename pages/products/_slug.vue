@@ -142,7 +142,7 @@ export default {
     },
     onThumbnailClick(event) {
       const id = event.target.parentElement.getAttribute("src");
-      const el = document.getElementById(id.substr(id.indexOf("#")));
+      const el = document.getElementById(id.substr(id.indexOf("#") + 1));
 
       scroll({
         top: el.offsetTop,
