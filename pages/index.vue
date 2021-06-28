@@ -60,6 +60,8 @@ export default {
 </script>
 
 <style>
+@import url("node_modules/@egjs/vue-flicking/dist/flicking.css");
+
 .front-page {
   position: relative;
 }
