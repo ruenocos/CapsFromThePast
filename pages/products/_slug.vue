@@ -206,6 +206,7 @@ export default {
   height: 100vh;
   position: sticky;
   margin: 0 6vw;
+  padding: 10rem 0;
 }
 
 .product-details * {
