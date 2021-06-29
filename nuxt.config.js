@@ -4,6 +4,12 @@ export default {
   router: {
     base: "/CapsFromThePast/"
   },
+
+  image: {
+    staticFilename: "/CapsFromThePast/[publicPath]/images/[name]-[hash][ext]",
+    provider: "static"
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "capsfromthepast",
