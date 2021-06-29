@@ -10,13 +10,19 @@
             :key="product.path"
           >
             <nuxt-img
+              class="products-img"
               :src="
-                `${router.base +
+                `${
                   product.images[
                     Math.floor(Math.random() * product.images.length)
-                  ]}`
+                  ]
+                }`
               "
             />
+            <div class="overlay">
+              <span>{{ product.name }}</span>
+              <span>${{ product.price }}</span>
+            </div>
           </nuxt-link>
         </div>
         <!-- <div class="products-col">
@@ -117,6 +123,32 @@ export default {
   flex-grow: 1;
   position: relative;
   margin-bottom: 2.5rem;
+}
+
+.overlay {
+  @apply absolute h-0 bottom-0 w-full left-0 right-0 w-full flex flex-col justify-center items-center font-sans;
+  transition: height 0.5s ease-in-out;
+  background: rgba(0, 0, 0, 0.527);
+  overflow: hidden;
+}
+
+.overlay span:first-child {
+  @apply text-white font-bold uppercase;
+  font-size: 1.5rem;
+}
+
+.overlay span:last-child {
+  @apply text-orange;
+  font-size: 1.25rem;
+}
+
+.products-img:hover + .overlay {
+  height: 100%;
+  z-index: 8;
+}
+
+.overlay:hover {
+  height: 100%;
 }
 
 .products-item img {

@@ -9,7 +9,7 @@
       <div class="basket-row-items">
         <div v-for="item in items" :key="item.path" class="item-container">
           <div class="item-img">
-            <nuxt-img :src="`${/CapsFromThePast/}/${item.img}`" />
+            <nuxt-img :src="`${item.img}`" />
           </div>
           <div class="item-details">
             <span>

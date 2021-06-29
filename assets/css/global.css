@@ -15,3 +15,31 @@
   scrollbar-color: white transparent;
   scrollbar-width: thin;
 }
+
+.hover-orange {
+  transition: all 0.3s;
+}
+
+.hover-orange:hover {
+  @apply text-orange;
+}
+
+.hover-orange::before {
+  content: "[ ";
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-orange:hover::before {
+  opacity: 1;
+}
+
+.hover-orange::after {
+  content: " ]";
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-orange:hover::after {
+  opacity: 1;
+}

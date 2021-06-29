@@ -9,7 +9,7 @@
     </div>
       <nav class="wons-header-navigation">
         <ul>
-          <li v-for="navItem in navigation" :key="navItem.name">
+          <li class="hover-orange" v-for="navItem in navigation" :key="navItem.name">
             <NuxtLink :to="navItem.link">{{ navItem.name }}</NuxtLink>
           </li>
         </ul>
@@ -20,7 +20,7 @@
             <svg-icon v-if="! enabledDarkMode" class="DLswitch" name="light_switch"/>
             <svg-icon v-else class="DLswitch" name="dark_switch"/>
           </li>
-          <li @click="onCartClick">
+          <li class="hover-orange" @click="onCartClick">
             Cart {{ cartCount }}
           </li>
         </ul>
@@ -35,7 +35,7 @@ export default {
     return {
       navigation: [
         { link: "/catalogus", name: "Shop" },
-        { link: "/", name: "Information" }
+        // { link: "/", name: "Information" }
       ],
       cartCountReal: 0,
       enabledDarkMode: false
@@ -134,7 +134,7 @@ export default {
 }
 
 .wons-header-navigation ul, .wons-header-navigation-right ul {
-  @apply flex-row flex items-center;
+  @apply flex-row flex items-center font-bold;
 }
 
 .wons-header-navigation > ul > li {

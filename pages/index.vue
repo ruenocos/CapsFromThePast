@@ -7,7 +7,7 @@
       :options="carouselSettings"
     >
       <div class="carousel-entry" v-for="image in images" :key="image">
-        <nuxt-img :src="`${router.base + image}`" />
+        <nuxt-img :src="`${image}`" />
       </div>
     </Flicking>
 
@@ -125,5 +125,13 @@ export default {
   padding: 5px 10px;
   margin: 20px 0;
   text-transform: uppercase;
+
+  transition: background 0.5s ease-in-out;
+  transition: color 0.5s ease-in-out;
+}
+
+.shop:hover {
+  background: var(--main-color);
+  color: white;
 }
 </style>

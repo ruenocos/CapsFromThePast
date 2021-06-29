@@ -1,6 +1,6 @@
 ---
 name: Vintage Daffy Duck cap
-price: '10'
+price: "10"
 images:
   - Frontview_product.jpg
   - Sideview_product.jpg
